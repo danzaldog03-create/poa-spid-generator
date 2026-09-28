@@ -3,40 +3,77 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>POA-SPID | Generador masivo v3</title>
+<title>POA-SPID · Generador masivo v7 · Devoluciones</title>
 <style>
-:root{--blue:#0759a8;--blue2:#0b73d1;--bg:#f4f7fb;--card:#fff;--line:#d7e0ea;--text:#17212b;--muted:#667788;--ok:#dff6e8;--warn:#fff4cf;--danger:#ffe1e1}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
-header{background:linear-gradient(135deg,#063c78,#0b73d1);color:#fff;padding:18px 20px;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0002}h1{margin:0;font-size:21px}.sub{opacity:.9;font-size:12px;margin-top:4px}
-main{max-width:1500px;margin:auto;padding:16px}.grid{display:grid;grid-template-columns:360px 1fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 2px 8px #17324d0a}h2{font-size:15px;margin:0 0 12px}.hint{font-size:12px;color:var(--muted);line-height:1.45}
-label{display:block;font-size:11px;font-weight:700;color:#41515f;margin:10px 0 5px}input,select,textarea{width:100%;border:1px solid #cbd6e2;border-radius:8px;padding:10px;font:inherit;font-size:13px;background:#fff}input:focus,select:focus,textarea:focus{outline:2px solid #0b73d133;border-color:#0b73d1}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}.primary{background:var(--blue);color:white}.secondary{background:#e8eef5;color:#18364f}.green{background:#d9f3e3;color:#136735}.red{background:var(--danger);color:#9a2020}.dark{background:#17212b;color:#fff}
-.op{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}.ophead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}.badge{font-size:11px;background:#e8f1fb;color:#0759a8;border-radius:20px;padding:5px 9px;font-weight:800}.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.field{min-width:0}.field small{display:block;color:#8794a0;font-size:10px;margin-top:3px}
-.bulk{background:#f7fbff;border:1px solid #b9d7ef;border-radius:12px;padding:12px;margin-top:12px}.bulk-title{font-weight:800;color:#0759a8;margin-bottom:5px}.summary{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{padding:7px 10px;border-radius:20px;background:#edf4fa;font-size:12px}.pill b{color:#0759a8}.notice{padding:10px 12px;border-radius:9px;background:var(--warn);font-size:12px;margin-top:10px}.auto-card{margin-top:12px;padding:12px;border:1px solid #b9d7ef;background:#f5faff;border-radius:10px}.auto-title{font-weight:800;color:#0759a8;margin-bottom:5px}
-
-/* NUEVO: configuración de campos fijos */
-.fixed-card{margin-top:12px;padding:12px;border:1px solid #b9d7ef;background:#f5faff;border-radius:10px}
-.fixed-title{font-weight:800;color:#0759a8;margin-bottom:4px}
+:root{
+  --blue:#0759a8;--blue2:#0b73d1;--bg:#f4f7fb;--card:#fff;--line:#d7e0ea;
+  --text:#17212b;--muted:#667788;--ok:#dff6e8;--warn:#fff4cf;--danger:#ffe1e1;
+  --soft:#f5faff;--softline:#b9d7ef
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#063c78,#0b73d1);color:#fff;padding:18px 20px;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px #0002}
+h1{margin:0;font-size:21px}.sub{opacity:.92;font-size:12px;margin-top:4px}
+main{max-width:1500px;margin:auto;padding:16px}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 2px 8px #17324d0a}
+h2{font-size:15px;margin:0 0 12px}.hint{font-size:12px;color:var(--muted);line-height:1.45}
+label{display:block;font-size:11px;font-weight:700;color:#41515f;margin:10px 0 5px}
+input,select,textarea{width:100%;border:1px solid #cbd6e2;border-radius:8px;padding:10px;font:inherit;font-size:13px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid #0b73d133;border-color:#0b73d1}
+input[readonly]{background:#f1f5f8;color:#4c5d6d}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+button{border:0;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+.primary{background:var(--blue);color:white}.secondary{background:#e8eef5;color:#18364f}
+.green{background:#d9f3e3;color:#136735}.red{background:var(--danger);color:#9a2020}.dark{background:#17212b;color:#fff}
+.orange{background:#ffe8c2;color:#8a4d00}
+.op{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.ophead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.badge{font-size:11px;background:#e8f1fb;color:#0759a8;border-radius:20px;padding:5px 9px;font-weight:800}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.field{min-width:0}.field small{display:block;color:#8794a0;font-size:10px;margin-top:3px}
+.bulk,.fixed-card,.return-card,.cycle-card,.upload-card{
+  background:var(--soft);border:1px solid var(--softline);border-radius:12px;padding:12px;margin-top:12px
+}
+.bulk-title,.fixed-title,.return-title,.cycle-title,.upload-title{font-weight:800;color:var(--blue);margin-bottom:5px}
 .fixed-row{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #dfeaf4}
-.fixed-row:last-child{border-bottom:0}
-.fixed-row input[type="checkbox"]{width:18px;height:18px;margin:0}
-.fixed-row label{margin:0;font-size:12px}
-.fixed-value{margin-top:5px}
-.fixed-value input{padding:8px;font-size:12px}
-
-.preview{height:360px;font-family:Consolas,monospace;font-size:12px;white-space:pre;overflow:auto}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}.modeltable{width:100%;border-collapse:collapse;font-size:12px;min-width:800px}.modeltable th,.modeltable td{padding:8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}.modeltable th{background:#f3f7fb;color:#41515f}.totalbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#edf6ff;border:1px solid #b9d7ef;border-radius:10px;padding:10px 12px;margin-top:10px}.big{font-size:18px;font-weight:900;color:#0759a8}.hidden{display:none}
-@media(max-width:980px){.grid{grid-template-columns:1fr}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){main{padding:10px}.fields,.row,.row3{grid-template-columns:1fr}.card{padding:12px}header{padding:14px}.preview{height:300px}}
+.fixed-row:last-child{border-bottom:0}.fixed-row input[type="checkbox"]{width:18px;height:18px;margin:0}
+.fixed-row label{margin:0;font-size:12px}.fixed-value{margin-top:5px}.fixed-value input{padding:8px;font-size:12px}
+.notice{padding:10px 12px;border-radius:9px;background:var(--warn);font-size:12px;margin-top:10px}
+.success{padding:10px 12px;border-radius:9px;background:var(--ok);font-size:12px;margin-top:10px}
+.error{padding:10px 12px;border-radius:9px;background:var(--danger);font-size:12px;margin-top:10px}
+.summary{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.pill{padding:7px 10px;border-radius:20px;background:#edf4fa;font-size:12px}.pill b{color:var(--blue)}
+.preview{height:360px;font-family:Consolas,monospace;font-size:12px;white-space:pre;overflow:auto}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:10px}
+.modeltable{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
+.modeltable th,.modeltable td{padding:8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.modeltable th{background:#f3f7fb;color:#41515f}
+.totalbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#edf6ff;border:1px solid var(--softline);border-radius:10px;padding:10px 12px;margin-top:10px}
+.big{font-size:18px;font-weight:900;color:var(--blue)}.hidden{display:none}
+.filebox{border:2px dashed #9fc8e8;border-radius:10px;padding:14px;text-align:center;background:#fff}
+.filebox input[type=file]{border:0;padding:6px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px}
+.kpi b{display:block;font-size:20px;color:var(--blue)}.kpi span{font-size:11px;color:var(--muted)}
+.return-list{max-height:300px;overflow:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin-top:10px}
+.return-list table{width:100%;border-collapse:collapse;font-size:11px}
+.return-list th,.return-list td{padding:7px;border-bottom:1px solid var(--line);text-align:left}
+.return-list th{position:sticky;top:0;background:#f3f7fb}
+.small{font-size:11px}.mono{font-family:Consolas,monospace}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+@media(max-width:1100px){.grid{grid-template-columns:1fr}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){main{padding:10px}.fields,.row,.row3{grid-template-columns:1fr}.card{padding:12px}header{padding:14px}.preview{height:300px}.kpi-grid{grid-template-columns:1fr}}
+.layout-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.layout-table{width:100%;border-collapse:collapse;font-size:12px}.layout-table th,.layout-table td{padding:7px;border-bottom:1px solid var(--line);text-align:left}.layout-table .pos{font-weight:800;color:var(--blue);white-space:nowrap}
 </style>
 </head>
-
 <body>
 
 <header>
-<h1>POA-SPID · Generador masivo v3</h1>
-<div class="sub">
-Participante emisor: <b>40036 · Inbursa</b> · Separador del layout: <b>~</b> · Campos vacíos conservan su posición
-</div>
+  <h1>POA-SPID · Generador masivo v7 + Devoluciones</h1>
+  <div class="sub">Participante emisor: <b>40036 · Inbursa</b> · Separador del layout: <b>~</b> · Campos vacíos conservan su posición</div>
 </header>
 
 <main>
@@ -45,12 +82,12 @@ Participante emisor: <b>40036 · Inbursa</b> · Separador del layout: <b>~</b> �
 <section>
 
 <div class="card">
-<h2>Configuración</h2>
+<h2>Configuración general</h2>
 
 <label>Clave del participante emisor</label>
 <input id="issuer" value="40036" maxlength="5">
 
-<label>Tipo de pago</label>
+<label>Tipo de pago para nuevos modelos</label>
 <select id="type" onchange="typeChanged()">
 <option value="01">01 — Tercero a Tercero</option>
 <option value="02">02 — Participante a Tercero</option>
@@ -62,33 +99,19 @@ Participante emisor: <b>40036 · Inbursa</b> · Separador del layout: <b>~</b> �
 
 <div class="auto-card">
 <div class="auto-title">⚡ Autollenado de Ordenante</div>
-<div class="hint">
-Captura una sola vez los datos comunes. Se colocan automáticamente en todos los campos de Ordenante que existan para el tipo seleccionado.
-</div>
+<div class="hint">Estos datos se reutilizan automáticamente donde el layout del tipo seleccionado los requiera.</div>
 
 <label>Nombre del ordenante</label>
 <input id="cfgNombreOrdenante" placeholder="Ej. INBURSA PRUEBA">
 
 <div class="row">
-<div>
-<label>Tipo de cuenta</label>
-<input id="cfgTipoCuentaOrdenante" placeholder="Ej. 01">
-</div>
-<div>
-<label>Cuenta ordenante</label>
-<input id="cfgCuentaOrdenante" placeholder="CLABE / cuenta">
-</div>
+<div><label>Tipo de cuenta</label><input id="cfgTipoCuentaOrdenante" placeholder="Ej. 40"></div>
+<div><label>Cuenta ordenante</label><input id="cfgCuentaOrdenante" placeholder="CLABE / cuenta"></div>
 </div>
 
 <div class="row">
-<div>
-<label>RFC ordenante</label>
-<input id="cfgRfcOrdenante" placeholder="RFC">
-</div>
-<div>
-<label>Código postal</label>
-<input id="cfgCpOrdenante" placeholder="CP">
-</div>
+<div><label>RFC ordenante</label><input id="cfgRfcOrdenante" placeholder="RFC"></div>
+<div><label>Código postal</label><input id="cfgCpOrdenante" placeholder="CP"></div>
 </div>
 
 <label>Domicilio ordenante</label>
@@ -98,1098 +121,708 @@ Captura una sola vez los datos comunes. Se colocan automáticamente en todos los
 <input id="cfgFechaConstitucionOrdenante" placeholder="AAAAMMDD" maxlength="8">
 
 <label>Inicial de la clave de rastreo</label>
-<div class="row">
 <input id="cfgRastreoPrefix" placeholder="Ej. INBPRUEBA">
-<input id="cfgRastreoStart" type="number" min="1" value="1" placeholder="Consecutivo inicial">
+
+<div class="row">
+<div><label>Consecutivo de rastreo inicial</label><input id="cfgRastreoStart" type="number" min="1" value="1"></div>
+<div><label>Prefijo de rastreo</label><input value="Se usa el campo de arriba" readonly></div>
 </div>
 
 <div class="hint">
-Cada operación recibe una clave distinta. Se conserva el prefijo y cambia el consecutivo. Máximo 30 caracteres.
+El folio de pago aumenta 1 por operación. Si tus últimas operaciones terminaron en 999, captura <b>1000</b>.
+El rastreo también conserva su prefijo y cambia el consecutivo.
 </div>
 </div>
 
+<div class="cycle-card">
+<div class="cycle-title">🔢 Continuidad de folios</div>
+<div class="hint">Aquí defines los datos que deben continuar en el archivo actual. No se agrega ningún campo llamado “ciclo” al layout.</div>
 
-<!-- NUEVO BLOQUE -->
+<div class="row">
+<div>
+<label>Folio paquete para este archivo</label>
+<input id="folioPaqueteGeneral" placeholder="Ej. 100">
+</div>
+<div>
+<label>Folio de pago inicial / siguiente folio</label>
+<input id="folioPagoGeneral" type="number" min="0" value="0">
+</div>
+</div>
+
+<div class="notice">
+<strong>Ejemplo:</strong> si el último folio utilizado fue <b>999</b>, captura <b>1000</b>. La siguiente operación será 1001, luego 1002, etc. Las devoluciones también consumen folio de pago consecutivo.
+</div>
+</div>
+
 <div class="fixed-card">
-
 <div class="fixed-title">📌 Campos fijos para la generación masiva</div>
+<div class="hint">Marca un campo y captura su valor. El valor aparecerá inmediatamente en cada modelo y se escribirá en el TXT final.</div>
 
-<div class="hint">
-Marca únicamente los campos que quieras capturar una sola vez y reutilizar en todas las operaciones.
-Los campos no marcados permanecen capturables individualmente en cada operación.
+<div class="fixed-row"><input type="checkbox" id="fixFolioPaquete"><label for="fixFolioPaquete">Folio paquete (mismo para todo el archivo)</label></div>
+<div class="fixed-value"><input id="fixedFolioPaquete" placeholder="Ej. 100"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixTipoCuenta"><label for="fixTipoCuenta">Tipo de cuenta</label></div>
+<div class="fixed-value"><input id="fixedTipoCuenta" placeholder="Ej. 40"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixMonto"><label for="fixMonto">Monto</label></div>
+<div class="fixed-value"><input id="fixedMonto" placeholder="Ej. 1.00"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixConcepto"><label for="fixConcepto">Concepto</label></div>
+<div class="fixed-value"><input id="fixedConcepto" placeholder="Concepto de pago"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixReferencia"><label for="fixReferencia">Referencia numérica</label></div>
+<div class="fixed-value"><input id="fixedReferencia" placeholder="1234"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixIp"><label for="fixIp">Dirección IP</label></div>
+<div class="fixed-value"><input id="fixedIp" placeholder="192.168.1.1"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixFecha"><label for="fixFecha">Fecha</label></div>
+<div class="fixed-value"><input id="fixedFecha" placeholder="AAAAMMDD"></div>
+
+<div class="fixed-row"><input type="checkbox" id="fixHora"><label for="fixHora">Hora</label></div>
+<div class="fixed-value"><input id="fixedHora" placeholder="HHMMSS"></div>
 </div>
 
-
-<div class="fixed-row">
-<input type="checkbox" id="fixFolioPaquete">
-<label for="fixFolioPaquete">Folio paquete</label>
+<div class="card layout-catalog" style="margin-top:12px">
+<h2>📋 Layout completo de tipos de pago</h2>
+<div class="hint">Este catálogo es únicamente de referencia. El modelo de operación de la derecha usa exactamente estos campos y posiciones RP[n] para generar el archivo.</div>
+<div class="layout-tabs">
+<button class="secondary" type="button" onclick="showLayoutCatalog('01')">01</button>
+<button class="secondary" type="button" onclick="showLayoutCatalog('02')">02</button>
+<button class="secondary" type="button" onclick="showLayoutCatalog('03')">03</button>
+<button class="secondary" type="button" onclick="showLayoutCatalog('04')">04</button>
+<button class="secondary" type="button" onclick="showLayoutCatalog('05')">05</button>
+<button class="secondary" type="button" onclick="showLayoutCatalog('06')">06</button>
 </div>
-<div class="fixed-value">
-<input id="fixedFolioPaquete" placeholder="Valor fijo de folio paquete">
+<div id="layoutCatalogBody"></div>
 </div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixTipoCuenta">
-<label for="fixTipoCuenta">Tipo de cuenta</label>
-</div>
-<div class="fixed-value">
-<input id="fixedTipoCuenta" placeholder="Ej. 01">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixMonto">
-<label for="fixMonto">Monto</label>
-</div>
-<div class="fixed-value">
-<input id="fixedMonto" placeholder="Ej. 1000.00">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixConcepto">
-<label for="fixConcepto">Concepto</label>
-</div>
-<div class="fixed-value">
-<input id="fixedConcepto" placeholder="Concepto de pago">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixReferencia">
-<label for="fixReferencia">Referencia numérica</label>
-</div>
-<div class="fixed-value">
-<input id="fixedReferencia" placeholder="Referencia">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixIp">
-<label for="fixIp">Dirección IP</label>
-</div>
-<div class="fixed-value">
-<input id="fixedIp" placeholder="Ej. 192.168.1.1">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixFecha">
-<label for="fixFecha">Fecha</label>
-</div>
-<div class="fixed-value">
-<input id="fixedFecha" placeholder="AAAAMMDD">
-</div>
-
-
-<div class="fixed-row">
-<input type="checkbox" id="fixHora">
-<label for="fixHora">Hora</label>
-</div>
-<div class="fixed-value">
-<input id="fixedHora" placeholder="HHMMSS">
-</div>
-
-</div>
-<!-- FIN NUEVO BLOQUE -->
-
-</div>
-
 
 <div class="card" style="margin-top:12px">
-
 <h2>Encabezado del archivo (RE)</h2>
-
 <div class="row">
-<div>
-<label>RE[1] Tipo de registro</label>
-<input id="reTipo" value="1" readonly>
+<div><label>RE[1] Tipo de registro</label><input id="reTipo" value="1" readonly></div>
+<div><label>RE[2] Participante emisor</label><input id="reEmisor" value="40036" maxlength="5"></div>
 </div>
-<div>
-<label>RE[2] Participante emisor</label>
-<input id="reEmisor" value="40036" maxlength="5">
-</div>
-</div>
-
 <div class="row">
-<div>
-<label>RE[3] Secuencia del archivo</label>
-<input id="seq" value="0001" maxlength="4" inputmode="numeric">
+<div><label>RE[3] Secuencia del archivo</label><input id="seq" value="0001" maxlength="4" inputmode="numeric"></div>
+<div><label>RE[4] Número de operaciones</label><input id="reOperaciones" value="0000" readonly></div>
 </div>
-<div>
-<label>RE[4] Número de operaciones</label>
-<input id="reOperaciones" value="0" readonly>
-</div>
-</div>
-
-<div class="hint">
-Se genera como <b>1~40036~0001~NNNN</b>. RE[4] es la suma de las cantidades de todas las filas modelo.
-</div>
+<div class="hint">Se genera como <b>1~40036~0001~NNNN~</b>. RE[4] es el total de operaciones que realmente se escribirán.</div>
 
 <label>Fecha/hora para nomenclatura</label>
 <input id="fileDateTime" type="datetime-local">
+</div>
 
+<!-- DEVOLUCIONES -->
+<div class="return-card">
+<div class="return-title">↩️ Devoluciones automáticas desde TXT recibido</div>
 <div class="hint">
-Nombre de descarga: <b>[clave participante][secuencia 4N][AAAAMMDDHHMMSS].env.sbmx</b>.
+Carga el TXT recibido, registra una o varias cuentas inválidas y la app identificará las operaciones que correspondan a esas cuentas.
+Para devolución normal utiliza <b>tipo de pago 05</b> y causa <b>01 — Cuenta inexistente</b>.
+</div>
+
+<label>Cuenta(s) inválida(s)</label>
+<textarea id="invalidAccounts" rows="4" placeholder="Una cuenta por línea&#10;Ej.&#10;646180123456789012&#10;646180987654321098"></textarea>
+
+<label>TXT recibido</label>
+<div class="filebox">
+<input id="receivedTxt" type="file" accept=".txt,text/plain">
+<div class="hint">El archivo se procesa localmente en el navegador.</div>
+</div>
+
+<div class="actions">
+<button class="orange" onclick="analyzeReceivedTxt()">🔎 Detectar cuentas inválidas</button>
+<button class="secondary" onclick="clearReceived()">Limpiar análisis</button>
+</div>
+
+<div id="returnStatus"></div>
+<div id="returnKpis"></div>
+<div id="returnTable"></div>
+
+<div class="actions">
+<button class="primary" id="createReturnsBtn" onclick="createReturnModels()" disabled>↩️ Crear modelos de devolución</button>
+</div>
+
+<div class="hint" style="margin-top:8px">
+Las devoluciones generadas quedan como modelos separados. Puedes revisar el layout antes de generar el archivo final.
+</div>
 </div>
 
 </div>
-
 </section>
-
 
 <section>
 
 <div class="card">
-
 <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
-
-<h2 style="margin:0">
-Operaciones modelo <span id="opcount" class="badge">0</span>
-</h2>
-
-<div class="hint">
-Captura una cuenta por fila y define cuántas operaciones quieres para esa cuenta.
+<h2 style="margin:0">Operaciones modelo <span id="opcount" class="badge">0</span></h2>
+<div class="hint">Cada modelo puede representar muchas operaciones. El campo <b>cantidad</b> controla cuántas filas reales se generan.</div>
 </div>
-
-</div>
-
 
 <div class="bulk">
-
 <div class="bulk-title">🚀 Generación masiva por cuenta</div>
-
-<div class="hint">
-Ejemplo: agrega 10 cuentas y coloca <b>50</b> en cantidad en cada fila → la app generará <b>500 operaciones</b>. No tienes que capturar las 500 una por una.
-</div>
-
+<div class="hint">Ejemplo: 10 modelos × 50 operaciones = 500 filas reales. El folio de pago y el rastreo avanzan automáticamente operación por operación.</div>
 <div class="summary" id="summary"></div>
-
 </div>
-
 
 <div id="ops" style="margin-top:12px"></div>
 
-
 <div class="actions">
-
-<button class="primary" onclick="addOperation()">
-+ Agregar cuenta / operación modelo
-</button>
-
-<button class="secondary" onclick="clearOps()">
-Limpiar
-</button>
-
-<button class="dark" onclick="toggleExpanded()">
-👁 Ver operaciones generadas
-</button>
-
+<button class="primary" onclick="addOperation()">+ Agregar cuenta / operación modelo</button>
+<button class="secondary" onclick="clearOps()">Limpiar modelos</button>
+<button class="dark" onclick="toggleExpanded()">👁 Ver operaciones generadas</button>
 </div>
-
 
 <div class="notice">
-
-<b>Reglas:</b> se usa <b>~</b> como separador.
-Nunca se utiliza <b>^</b>.
-Si un campo queda vacío, se escribe <b>~</b> para conservar su posición.
-La cantidad de cada fila se suma para RE[4].
-
+<b>Reglas:</b> se usa <b>~</b> como separador. Nunca se utiliza <b>^</b>. Los campos vacíos conservan su posición. RE[4] se calcula con las operaciones reales.
 </div>
-
 </div>
-
 
 <div class="card" style="margin-top:12px">
-
 <h2>Resumen de generación</h2>
-
 <div class="totalbar">
-
-<div>
-<div class="hint">Total de operaciones a generar</div>
-<div id="totalOps" class="big">0</div>
+<div><div class="hint">Total de operaciones a generar</div><div id="totalOps" class="big">0</div></div>
+<div class="hint" id="breakdown">Agrega filas para comenzar.</div>
 </div>
-
-<div class="hint" id="breakdown">
-Agrega filas para comenzar.
-</div>
-
-</div>
-
 <div id="expanded" class="hidden"></div>
-
 </div>
-
 
 <div class="card" style="margin-top:12px">
-
 <h2>Vista previa del archivo</h2>
-
-<textarea
-id="output"
-class="preview"
-readonly
-placeholder="Aquí aparecerá el contenido serializado con ~">
-</textarea>
-
+<textarea id="output" class="preview" readonly placeholder="Aquí aparecerá el contenido serializado con ~"></textarea>
 <div class="actions">
-
-<button class="primary" onclick="validateAndGenerate()">
-✓ Validar y generar
-</button>
-
-<button class="green" onclick="downloadFile()">
-⬇ Descargar .env.sbmx
-</button>
-
+<button class="primary" onclick="validateAndGenerate()">✓ Validar y generar</button>
+<button class="green" onclick="downloadFile()">⬇ Descargar .env.sbmx</button>
 </div>
-
 </div>
 
 </section>
-
 </div>
 </main>
 
-
 <script>
-
 const typeFields={
-
 "01":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["nombreOrdenante","Nombre ordenante","RP[7]"],
-["tipoCuentaOrdenante","Tipo cuenta ordenante","RP[8]"],
-["cuentaOrdenante","Cuenta ordenante","RP[9]"],
-["rfcOrdenante","RFC ordenante","RP[10]"],
-["domicilioOrdenante","Domicilio ordenante","RP[11]"],
-["cpOrdenante","Código postal ordenante","RP[12]"],
-["fechaConstitucionOrdenante","Fecha constitución ordenante","RP[13]"],
-["nombreBeneficiario","Nombre beneficiario","RP[14]"],
-["tipoCuentaBeneficiario","Tipo cuenta beneficiario","RP[15]"],
-["cuentaBeneficiario","Cuenta beneficiario","RP[16]"],
-["rfcBeneficiario","RFC beneficiario","RP[17]"],
-["clasificacion","Clasificación de la operación","RP[18]"],
-["concepto","Concepto de pago","RP[19]"],
-["referencia","Referencia numérica","RP[20]"],
-["ip","Dirección IP","RP[21]"],
-["fechaInstruccion","Fecha de instrucción del pago","RP[22]"],
-["horaInstruccion","Hora de instrucción del pago","RP[23]"],
-["fechaAceptacion","Fecha de aceptación del pago","RP[24]"],
-["horaAceptacion","Hora de aceptación del pago","RP[25]"]
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],["nombreOrdenante","Nombre ordenante","RP[7]"],
+["tipoCuentaOrdenante","Tipo cuenta ordenante","RP[8]"],["cuentaOrdenante","Cuenta ordenante","RP[9]"],
+["rfcOrdenante","RFC ordenante","RP[10]"],["domicilioOrdenante","Domicilio ordenante","RP[11]"],
+["cpOrdenante","Código postal ordenante","RP[12]"],["fechaConstitucionOrdenante","Fecha constitución ordenante","RP[13]"],
+["nombreBeneficiario","Nombre beneficiario","RP[14]"],["tipoCuentaBeneficiario","Tipo cuenta beneficiario","RP[15]"],
+["cuentaBeneficiario","Cuenta beneficiario","RP[16]"],["rfcBeneficiario","RFC beneficiario","RP[17]"],
+["clasificacion","Clasificación de la operación","RP[18]"],["concepto","Concepto de pago","RP[19]"],
+["referencia","Referencia numérica","RP[20]"],["ip","Dirección IP","RP[21]"],
+["fechaInstruccion","Fecha de instrucción del pago","RP[22]"],["horaInstruccion","Hora de instrucción del pago","RP[23]"],
+["fechaAceptacion","Fecha de aceptación del pago","RP[24]"],["horaAceptacion","Hora de aceptación del pago","RP[25]"]
 ],
-
 "02":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["nombreBeneficiario","Nombre beneficiario","RP[7]"],
-["tipoCuentaBeneficiario","Tipo cuenta beneficiario","RP[8]"],
-["cuentaBeneficiario","Cuenta beneficiario","RP[9]"],
-["rfcBeneficiario","RFC beneficiario","RP[10]"],
-["concepto","Concepto de pago","RP[11]"],
-["clasificacion","Clasificación de la operación","RP[12]"],
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],
+["nombreBeneficiario","Nombre beneficiario","RP[7]"],["tipoCuentaBeneficiario","Tipo cuenta beneficiario","RP[8]"],
+["cuentaBeneficiario","Cuenta beneficiario","RP[9]"],["rfcBeneficiario","RFC beneficiario","RP[10]"],
+["concepto","Concepto de pago","RP[11]"],["clasificacion","Clasificación de la operación","RP[12]"],
 ["referencia","Referencia numérica","RP[13]"]
 ],
-
 "03":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["nombreOrdenante","Nombre ordenante","RP[7]"],
-["tipoCuentaOrdenante","Tipo cuenta ordenante","RP[8]"],
-["cuentaOrdenante","Cuenta ordenante","RP[9]"],
-["rfcOrdenante","RFC ordenante","RP[10]"],
-["domicilioOrdenante","Domicilio ordenante","RP[11]"],
-["cpOrdenante","Código postal ordenante","RP[12]"],
-["fechaConstitucionOrdenante","Fecha constitución ordenante","RP[13]"],
-["clasificacion","Clasificación de la operación","RP[14]"],
-["concepto","Concepto de pago","RP[15]"],
-["referencia","Referencia numérica","RP[16]"],
-["ip","Dirección IP","RP[17]"],
-["fechaInstruccion","Fecha de instrucción del pago","RP[18]"],
-["horaInstruccion","Hora de instrucción del pago","RP[19]"],
-["fechaAceptacion","Fecha de aceptación del pago","RP[20]"],
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],
+["nombreOrdenante","Nombre ordenante","RP[7]"],["tipoCuentaOrdenante","Tipo cuenta ordenante","RP[8]"],
+["cuentaOrdenante","Cuenta ordenante","RP[9]"],["rfcOrdenante","RFC ordenante","RP[10]"],
+["domicilioOrdenante","Domicilio ordenante","RP[11]"],["cpOrdenante","Código postal ordenante","RP[12]"],
+["fechaConstitucionOrdenante","Fecha constitución ordenante","RP[13]"],["clasificacion","Clasificación de la operación","RP[14]"],
+["concepto","Concepto de pago","RP[15]"],["referencia","Referencia numérica","RP[16]"],
+["ip","Dirección IP","RP[17]"],["fechaInstruccion","Fecha de instrucción del pago","RP[18]"],
+["horaInstruccion","Hora de instrucción del pago","RP[19]"],["fechaAceptacion","Fecha de aceptación del pago","RP[20]"],
 ["horaAceptacion","Hora de aceptación del pago","RP[21]"]
 ],
-
 "04":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["tipoOperacion","Tipo de operación","RP[7]"],
-["concepto","Concepto de pago","RP[8]"],
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],
+["tipoOperacion","Tipo de operación","RP[7]"],["concepto","Concepto de pago","RP[8]"],
 ["referencia","Referencia numérica","RP[9]"]
 ],
-
 "05":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["rastreoOriginal","Clave de rastreo del pago original","RP[7]"],
-["causaDevolucion","Causa de devolución","RP[8]"]
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],
+["rastreoOriginal","Clave de rastreo del pago original","RP[7]"],["causaDevolucion","Causa de devolución","RP[8]"]
 ],
-
 "06":[
-["folioPaquete","Folio paquete","RP[1]"],
-["tipoPago","Tipo pago","RP[2]"],
-["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],
-["monto","Monto del pago","RP[4]"],
-["folioPago","Folio del pago","RP[5]"],
-["rastreo","Clave de rastreo","RP[6]"],
-["rastreoOriginal","Clave de rastreo del pago original","RP[7]"],
-["folioPaqueteOriginal","Folio paquete instrucción original","RP[8]"],
-["fechaTransferenciaOriginal","Fecha transferencia original","RP[9]"],
-["rastreoOriginal2","Clave de rastreo del pago original","RP[10]"],
-["referenciaOriginal","Referencia numérica del pago original","RP[11]"],
-["tipoCuentaOrdenanteOriginal","Tipo de cuenta ordenante del pago original","RP[12]"],
-["cuentaOrdenanteOriginal","Cuenta ordenante del pago original","RP[13]"],
-["causaDevolucion","Causa de devolución","RP[14]"],
-["conceptoOriginal","Concepto del pago original","RP[15]"],
-["montoOriginal","Monto del pago original","RP[16]"],
+["folioPaquete","Folio paquete","RP[1]"],["tipoPago","Tipo pago","RP[2]"],
+["receptor","Clave de participante receptor / clave de participante emisor","RP[3]"],["monto","Monto del pago","RP[4]"],
+["folioPago","Folio del pago","RP[5]"],["rastreo","Clave de rastreo","RP[6]"],
+["rastreoOriginal","Clave de rastreo del pago original","RP[7]"],["folioPaqueteOriginal","Folio paquete instrucción original","RP[8]"],
+["fechaTransferenciaOriginal","Fecha transferencia original","RP[9]"],["rastreoOriginal2","Clave de rastreo del pago original","RP[10]"],
+["referenciaOriginal","Referencia numérica del pago original","RP[11]"],["tipoCuentaOrdenanteOriginal","Tipo de cuenta ordenante del pago original","RP[12]"],
+["cuentaOrdenanteOriginal","Cuenta ordenante del pago original","RP[13]"],["causaDevolucion","Causa de devolución","RP[14]"],
+["conceptoOriginal","Concepto del pago original","RP[15]"],["montoOriginal","Monto del pago original","RP[16]"],
 ["montoCompensacion","Monto de la compensación pagada","RP[17]"]
-]
-
-};
-
+]};
 
 let operations=[];
 let generated="";
+let detectedReturns=[];
+let receivedLines=[];
 
-
-function fieldsFor(t){
-return typeFields[t]||typeFields["01"];
-}
-
-
-function v(id){
-return document.getElementById(id).value.trim();
-}
-
-
-/* =========================
-   CONFIGURACIÓN ORIGINAL
-   ========================= */
+function v(id){const e=document.getElementById(id);return e?e.value.trim():""}
+function fieldsFor(t){return typeFields[t]||typeFields["01"]}
+function esc(x){return String(x??"").replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("<","&lt;").replaceAll(">","&gt;")}
+function pad4(x){return String(x||"").replace(/\D/g,"").padStart(4,"0").slice(-4)}
 
 function cfg(){
-
-return{
-nombreOrdenante:v("cfgNombreOrdenante"),
-tipoCuentaOrdenante:v("cfgTipoCuentaOrdenante"),
-cuentaOrdenante:v("cfgCuentaOrdenante"),
-rfcOrdenante:v("cfgRfcOrdenante"),
-domicilioOrdenante:v("cfgDomicilioOrdenante"),
-cpOrdenante:v("cfgCpOrdenante"),
-fechaConstitucionOrdenante:v("cfgFechaConstitucionOrdenante"),
-rastreoPrefix:v("cfgRastreoPrefix").replaceAll("~",""),
-rastreoStart:Math.max(1,Number(v("cfgRastreoStart"))||1)
-};
-
+  return {
+    nombreOrdenante:v("cfgNombreOrdenante"),tipoCuentaOrdenante:v("cfgTipoCuentaOrdenante"),
+    cuentaOrdenante:v("cfgCuentaOrdenante"),rfcOrdenante:v("cfgRfcOrdenante"),
+    domicilioOrdenante:v("cfgDomicilioOrdenante"),cpOrdenante:v("cfgCpOrdenante"),
+    fechaConstitucionOrdenante:v("cfgFechaConstitucionOrdenante"),
+    rastreoPrefix:v("cfgRastreoPrefix").replaceAll("~",""),
+    rastreoStart:Math.max(1,Number(v("cfgRastreoStart"))||1)
+  }
 }
 
-
-/* =========================
-   NUEVO: CAMPOS FIJOS
-   ========================= */
-
-function fixedEnabled(id){
-return document.getElementById(id).checked;
-}
-
-
-function fixedValue(id){
-return v(id);
-}
-
+function fixedEnabled(id){return !!document.getElementById(id)?.checked}
+function fixedValue(id){return v(id)}
 
 function fixedValueForField(k){
-
-/* Folio paquete */
-if(k==="folioPaquete" && fixedEnabled("fixFolioPaquete"))
-return fixedValue("fixedFolioPaquete");
-
-/* Tipo de cuenta */
-if(
-(k==="tipoCuentaOrdenante" ||
- k==="tipoCuentaBeneficiario" ||
- k==="tipoCuentaOrdenanteOriginal")
-&& fixedEnabled("fixTipoCuenta")
-)
-return fixedValue("fixedTipoCuenta");
-
-/* Monto */
-if(k==="monto" && fixedEnabled("fixMonto"))
-return fixedValue("fixedMonto");
-
-/* Concepto */
-if(k==="concepto" && fixedEnabled("fixConcepto"))
-return fixedValue("fixedConcepto");
-
-/* Referencia */
-if(k==="referencia" && fixedEnabled("fixReferencia"))
-return fixedValue("fixedReferencia");
-
-/* IP */
-if(k==="ip" && fixedEnabled("fixIp"))
-return fixedValue("fixedIp");
-
-/* Fecha */
-if(
-(k==="fechaInstruccion" ||
- k==="fechaAceptacion")
-&& fixedEnabled("fixFecha")
-)
-return fixedValue("fixedFecha");
-
-/* Hora */
-if(
-(k==="horaInstruccion" ||
- k==="horaAceptacion")
-&& fixedEnabled("fixHora")
-)
-return fixedValue("fixedHora");
-
-return null;
+  if(k==="folioPaquete" && fixedEnabled("fixFolioPaquete")) return fixedValue("fixedFolioPaquete");
+  if((k==="tipoCuentaOrdenante"||k==="tipoCuentaBeneficiario"||k==="tipoCuentaOrdenanteOriginal") && fixedEnabled("fixTipoCuenta")) return fixedValue("fixedTipoCuenta");
+  if(k==="monto" && fixedEnabled("fixMonto")) return fixedValue("fixedMonto");
+  if((k==="concepto"||k==="conceptoOriginal") && fixedEnabled("fixConcepto")) return fixedValue("fixedConcepto");
+  if(k==="referencia" && fixedEnabled("fixReferencia")) return fixedValue("fixedReferencia");
+  if(k==="ip" && fixedEnabled("fixIp")) return fixedValue("fixedIp");
+  if((k==="fechaInstruccion"||k==="fechaAceptacion") && fixedEnabled("fixFecha")) return fixedValue("fixedFecha");
+  if((k==="horaInstruccion"||k==="horaAceptacion") && fixedEnabled("fixHora")) return fixedValue("fixedHora");
+  return null;
 }
 
-
-function autoValue(k,index,c){
-
-const m={
-nombreOrdenante:c.nombreOrdenante,
-tipoCuentaOrdenante:c.tipoCuentaOrdenante,
-cuentaOrdenante:c.cuentaOrdenante,
-rfcOrdenante:c.rfcOrdenante,
-domicilioOrdenante:c.domicilioOrdenante,
-cpOrdenante:c.cpOrdenante,
-fechaConstitucionOrdenante:c.fechaConstitucionOrdenante,
-
-tipoCuentaOrdenanteOriginal:c.tipoCuentaOrdenante,
-cuentaOrdenanteOriginal:c.cuentaOrdenante
-};
-
-if(Object.hasOwn(m,k))
-return m[k];
-
-const fixed=fixedValueForField(k);
-
-if(fixed!==null)
-return fixed;
-
-if(k==="rastreo")
-return makeRastreo(c,index);
-
-return null;
+function globalFolioPagoStart(){
+  const n=Number(v("folioPagoGeneral"));
+  return Number.isFinite(n)&&n>=0?n:0;
 }
 
+function globalFolioPaquete(){
+  const a=v("folioPaqueteGeneral");
+  if(a!=="") return a;
+  if(fixedEnabled("fixFolioPaquete")) return fixedValue("fixedFolioPaquete");
+  return "";
+}
 
 function makeRastreo(c,index){
-return(c.rastreoPrefix+String(c.rastreoStart+index)).slice(0,30);
+  return (c.rastreoPrefix+String(c.rastreoStart+index)).slice(0,30);
 }
 
+function autoValue(k,index,c,op,record=null){
+  // PRIORIDAD 1: campos fijos
+  const fixed=fixedValueForField(k);
+  if(fixed!==null) return fixed;
+
+  // Datos provenientes del TXT recibido para una devolución detectada.
+  if(op?.type==="05" && record){
+    if(k==="monto" && record.monto!==undefined) return record.monto;
+    if(k==="rastreoOriginal" && record.rastreoOriginal!==undefined) return record.rastreoOriginal;
+    if(k==="causaDevolucion") return "01";
+  }
+
+  // Folio paquete: si se capturó en continuidad, aplica aunque no esté marcado como fijo
+  if(k==="folioPaquete"){
+    const fp=globalFolioPaquete();
+    if(fp!=="") return fp;
+  }
+
+  // Folio de pago: consecutivo global por operación
+  if(k==="folioPago"){
+    const start=globalFolioPagoStart();
+    return String(start+index);
+  }
+
+  // Tipo de pago
+  if(k==="tipoPago") return op?.type || v("type");
+
+  // Causa normal de devolución
+  if(k==="causaDevolucion" && op?.type==="05") return "01";
+
+  // Autollenado de ordenante
+  const m={
+    nombreOrdenante:c.nombreOrdenante,
+    tipoCuentaOrdenante:c.tipoCuentaOrdenante,
+    cuentaOrdenante:c.cuentaOrdenante,
+    rfcOrdenante:c.rfcOrdenante,
+    domicilioOrdenante:c.domicilioOrdenante,
+    cpOrdenante:c.cpOrdenante,
+    fechaConstitucionOrdenante:c.fechaConstitucionOrdenante,
+    tipoCuentaOrdenanteOriginal:c.tipoCuentaOrdenante,
+    cuentaOrdenanteOriginal:c.cuentaOrdenante
+  };
+  if(Object.hasOwn(m,k) && m[k]!=="") return m[k];
+
+  if(k==="rastreo") return makeRastreo(c,index);
+
+  return null;
+}
 
 function labelType(t){
-return document.querySelector(`#type option[value="${t}"]`).textContent;
+  const e=document.querySelector(`#type option[value="${t}"]`);
+  return e?e.textContent:({"01":"01 — Tercero a Tercero","02":"02 — Participante a Tercero","03":"03 — Tercero a Participante","04":"04 — Participante a Participante","05":"05 — Devolución","06":"06 — Devolución Extemporánea"}[t]||t);
 }
 
-
-function addOperation(){
-
-const type=v("type");
-const values={};
-
-fieldsFor(type).forEach(([k])=>{
-values[k]=k==="tipoPago"?type:"";
-});
-
-operations.push({
-type,
-values,
-qty:50
-});
-
-update();
+function addOperation(typeOverride=null, valuesOverride=null, qty=1){
+  const type=typeOverride||v("type");
+  const values={};
+  fieldsFor(type).forEach(([k])=>values[k]=valuesOverride?.[k]??(k==="tipoPago"?type:""));
+  operations.push({type,values,qty:Math.max(1,Number(qty)||1)});
+  update();
+  setTimeout(()=>document.getElementById("ops")?.lastElementChild?.scrollIntoView({behavior:"smooth",block:"start"}),50);
 }
 
+function removeOp(i){operations.splice(i,1);generated="";document.getElementById("output").value="";update()}
+function clearOps(){operations=[];generated="";document.getElementById("output").value="";update()}
 
-function removeOp(i){
-operations.splice(i,1);
-update();
-}
-
-
-function clearOps(){
-
-operations=[];
-generated="";
-document.getElementById("output").value="";
-update();
-
-}
-
+function total(){return operations.reduce((s,o)=>s+(Number(o.qty)||0),0)}
 
 function update(){
-
-render();
-updateHeaderCount();
-renderSummary();
-renderExpanded();
-
+  render();updateHeaderCount();renderSummary();renderExpanded();
 }
-
-
-/* =========================
-   RENDER ORIGINAL
-   + CAMPOS FIJOS
-   ========================= */
 
 function render(){
+  const box=document.getElementById("ops");box.innerHTML="";
+  operations.forEach((op,i)=>{
+    const el=document.createElement("div");el.className="op";
+    const startIndex=operations.slice(0,i).reduce((s,x)=>s+(Number(x.qty)||0),0);
+    const firstFolio=globalFolioPagoStart()+startIndex;
+    el.innerHTML=`
+      <div class="ophead">
+        <div><b>Modelo ${i+1}</b> <span class="badge">${esc(labelType(op.type))}</span></div>
+        <button class="red" onclick="removeOp(${i})">Eliminar</button>
+      </div>
 
-const box=document.getElementById("ops");
-box.innerHTML="";
+      <div class="bulk" style="margin-top:0">
+        <div class="bulk-title">📌 Tipo de pago y generación</div>
+        <div class="row">
+          <div>
+            <label>Tipo de pago</label>
+            <select data-type-i="${i}">
+              ${["01","02","03","04","05","06"].map(t=>`<option value="${t}" ${t===op.type?"selected":""}>${esc(labelType(t))}</option>`).join("")}
+            </select>
+          </div>
+          <div>
+            <label>¿Cuántas operaciones quieres generar para este modelo?</label>
+            <input type="number" min="1" max="9999" data-qty="${i}" value="${op.qty}">
+          </div>
+        </div>
+        <div class="hint">Primera operación del modelo: folio de pago <b>${firstFolio}</b> · última: <b>${firstFolio+Number(op.qty)-1}</b></div>
+      </div>
 
-operations.forEach((op,i)=>{
-
-const el=document.createElement("div");
-el.className="op";
-
-el.innerHTML=`
-
-<div class="ophead">
-
-<div>
-<b>Modelo ${i+1}</b>
-<span class="badge">${labelType(op.type)}</span>
-</div>
-
-<button class="red" onclick="removeOp(${i})">
-Eliminar
-</button>
-
-</div>
-
-
-<div class="row3">
-
-<div>
-<label>¿Cuántas operaciones para esta fila?</label>
-<input
-type="number"
-min="1"
-max="9999"
-data-qty="${i}"
-value="${op.qty}">
-</div>
-
-<div>
-<label>Total acumulado</label>
-<input
-value="${operations.slice(0,i+1).reduce((s,x)=>s+x.qty,0)}"
-readonly>
-</div>
-
-<div>
-<label>Clave de rastreo inicial</label>
-<input
-value="${makeRastreo(cfg(),operations.slice(0,i).reduce((s,x)=>s+x.qty,0))}"
-readonly>
-</div>
-
-</div>
-
-
-<div class="fields">
-
-${fieldsFor(op.type).map(([k,n,m])=>{
-
-const av=autoValue(k,0,cfg());
-const auto=av!==null;
-
-const val=auto
-?av
-:(op.values[k]||"");
-
-return`
-
-<div class="field">
-
-<label>
-${n}
-${auto
-?'<span style="color:#0759a8">⚡</span>'
-:""}
-</label>
-
-<input
-data-i="${i}"
-data-k="${k}"
-value="${esc(val)}"
-${auto?"readonly":""}>
-
-<small>
-${m}
-${auto
-?" · automático"
-:""}
-</small>
-
-</div>
-
-`;
-
-}).join("")}
-
-</div>
-
-`;
-
-box.appendChild(el);
-
-});
-
-document.getElementById("opcount").textContent=operations.length;
-
+      <div class="fields">
+        ${fieldsFor(op.type).map(([k,n,m])=>{
+          const av=autoValue(k,0,cfg(),op,op.returnRecords?.[0]||null);
+          const isAuto=av!==null;
+          const val=isAuto?av:(op.values[k]||"");
+          return `<div class="field">
+            <label>${esc(n)} ${isAuto?'<span style="color:#0759a8">⚡</span>':''}</label>
+            <input data-i="${i}" data-k="${k}" value="${esc(val)}" ${isAuto?"readonly":""}>
+            <small>${esc(m)}${isAuto?" · automático":""}</small>
+          </div>`;
+        }).join("")}
+      </div>`;
+    box.appendChild(el);
+  });
+  document.getElementById("opcount").textContent=operations.length;
 }
-
-
-function esc(x){
-
-return String(x??"")
-.replaceAll("&","&amp;")
-.replaceAll('"',"&quot;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;");
-
-}
-
-
-function total(){
-
-return operations.reduce(
-(s,o)=>s+(Number(o.qty)||0),
-0
-);
-
-}
-
 
 function updateHeaderCount(){
-
-const t=total();
-
-document.getElementById("reOperaciones").value=
-String(t).padStart(4,"0").slice(-4);
-
-return t;
-
+  document.getElementById("reOperaciones").value=pad4(total());
 }
-
 
 function renderSummary(){
-
-const t=total();
-
-document.getElementById("totalOps").textContent=
-t.toLocaleString("es-MX");
-
-document.getElementById("summary").innerHTML=
-operations.length
-?operations.map((o,i)=>
-`<span class="pill">
-Modelo ${i+1}: <b>${o.qty}</b>
-</span>`
-).join("")
-:'<span class="pill">Sin filas todavía</span>';
-
-document.getElementById("breakdown").textContent=
-operations.length
-?`${operations.length} modelo(s) · ${t.toLocaleString("es-MX")} operación(es) totales`
-:"Agrega filas para comenzar.";
-
+  const t=total();
+  document.getElementById("totalOps").textContent=t.toLocaleString("es-MX");
+  document.getElementById("summary").innerHTML=operations.length
+    ?operations.map((o,i)=>`<span class="pill">Modelo ${i+1}: <b>${o.qty}</b> · ${esc(labelType(o.type))}</span>`).join("")
+    :'<span class="pill">Sin modelos todavía</span>';
+  document.getElementById("breakdown").textContent=operations.length
+    ?`${operations.length} modelo(s) · ${t.toLocaleString("es-MX")} operación(es) reales`
+    :"Agrega modelos para comenzar.";
 }
-
 
 function renderExpanded(){
-
-const box=document.getElementById("expanded");
-
-if(box.classList.contains("hidden"))
-return;
-
-const c=cfg();
-
-let html=
-'<div class="tablewrap"><table class="modeltable"><thead><tr><th>#</th><th>Tipo</th><th>Rastreo</th><th>Cantidad</th><th>Beneficiario</th><th>Cuenta</th><th>Monto</th></tr></thead><tbody>';
-
-let idx=0;
-
-operations.forEach((o,i)=>{
-
-const name=o.values.nombreBeneficiario||"";
-const acct=o.values.cuentaBeneficiario||"";
-
-const fixedAmount=fixedValueForField("monto");
-
-const amount=
-fixedAmount!==null
-?fixedAmount
-:(o.values.monto||"");
-
-for(let n=0;n<o.qty;n++){
-
-html+=`
-<tr>
-<td>${++idx}</td>
-<td>${labelType(o.type)}</td>
-<td>${makeRastreo(c,idx-1)}</td>
-<td>1</td>
-<td>${esc(name)}</td>
-<td>${esc(acct)}</td>
-<td>${esc(amount)}</td>
-</tr>
-`;
-
+  const box=document.getElementById("expanded");
+  if(box.classList.contains("hidden"))return;
+  const c=cfg();let idx=0;
+  let html='<div class="tablewrap"><table class="modeltable"><thead><tr><th>#</th><th>Tipo</th><th>Folio paquete</th><th>Folio pago</th><th>Rastreo</th><th>Beneficiario</th><th>Cuenta</th><th>Monto</th></tr></thead><tbody>';
+  operations.forEach((o,i)=>{
+    for(let n=0;n<o.qty;n++){
+      const values={};
+      const record=o.returnRecords?.[n]||null;
+      fieldsFor(o.type).forEach(([k])=>values[k]=autoValue(k,idx,c,o,record)??o.values[k]??"");
+      html+=`<tr><td>${++idx}</td><td>${esc(labelType(o.type))}</td><td>${esc(values.folioPaquete)}</td><td>${esc(values.folioPago)}</td><td>${esc(values.rastreo)}</td><td>${esc(values.nombreBeneficiario)}</td><td>${esc(values.cuentaBeneficiario)}</td><td>${esc(values.monto)}</td></tr>`;
+    }
+  });
+  html+="</tbody></table></div>";box.innerHTML=html;
 }
 
-});
+function toggleExpanded(){document.getElementById("expanded").classList.toggle("hidden");renderExpanded()}
 
-html+="</tbody></table></div>";
-
-box.innerHTML=html;
-
+function showLayoutCatalog(type){
+  const box=document.getElementById("layoutCatalogBody");
+  if(!box)return;
+  const rows=fieldsFor(type).map(([k,n,m],i)=>`<tr><td class="pos">${m}</td><td>${esc(n)}</td><td>${esc(k)}</td></tr>`).join("");
+  box.innerHTML=`<div class="badge">${esc(labelType(type))}</div><div class="tablewrap"><table class="layout-table"><thead><tr><th>Posición</th><th>Campo del layout</th><th>Clave interna</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-
-
-function toggleExpanded(){
-
-const box=document.getElementById("expanded");
-
-box.classList.toggle("hidden");
-
-renderExpanded();
-
-}
-
 
 function typeChanged(){
-
-if(operations.length){
-
-if(!confirm(
-"Cambiar el tipo de pago cambiará la estructura de las nuevas filas. ¿Continuar?"
-))
-return;
-
+  // El selector principal sólo define el tipo de los modelos NUEVOS.
+  // Los modelos existentes no se modifican.
 }
-
-update();
-
-}
-
-
-/* =========================
-   INPUTS
-   ========================= */
 
 document.addEventListener("input",e=>{
-
-if(e.target.dataset.i!==undefined){
-
-operations[+e.target.dataset.i]
-.values[e.target.dataset.k]=e.target.value;
-
-}
-
-if(e.target.dataset.qty!==undefined){
-
-operations[+e.target.dataset.qty].qty=
-Math.max(
-1,
-Math.min(
-9999,
-Number(e.target.value)||1
-)
-);
-
-}
-
-if(e.target.id&&e.target.id.startsWith("cfg")){
-
-render();
-renderSummary();
-renderExpanded();
-
-}
-
-if(e.target.id==="reEmisor"){
-
-document.getElementById("issuer").value=e.target.value;
-render();
-
-}
-
-if(e.target.id==="seq")
-updateHeaderCount();
-
-
-/* NUEVO:
-   si cambia un valor fijo,
-   refresca las operaciones
-*/
-if(
-e.target.id.startsWith("fixed")
-){
-
-render();
-renderExpanded();
-
-}
-
+  generated="";
+  if(e.target.dataset.i!==undefined && e.target.dataset.k){
+    const op=operations[+e.target.dataset.i];
+    if(op && !e.target.readOnly) op.values[e.target.dataset.k]=e.target.value;
+  }
+  if(e.target.dataset.qty!==undefined){
+    const i=+e.target.dataset.qty;
+    if(operations[i]) operations[i].qty=Math.max(1,Math.min(9999,Number(e.target.value)||1));
+  }
+  if(e.target.id==="reEmisor"){
+    document.getElementById("issuer").value=e.target.value;render();
+  }
+  if(e.target.id==="seq")updateHeaderCount();
+  if(e.target.id==="folioPagoGeneral"||e.target.id==="folioPagoInicial"||e.target.id==="folioPaqueteGeneral"){
+    render();renderSummary();renderExpanded();
+  }
+  if(e.target.id?.startsWith("cfg")||e.target.id?.startsWith("fixed")||e.target.id==="invalidAccounts"){
+    render();renderSummary();renderExpanded();
+  }
 });
 
-
-/* NUEVO:
-   cambios en los checks de fijación
-*/
 document.addEventListener("change",e=>{
-
-if(
-e.target.id.startsWith("fix")
-){
-
-render();
-renderExpanded();
-
-}
-
+  if(e.target.id?.startsWith("fix")){
+    render();renderSummary();renderExpanded();return;
+  }
+  if(e.target.dataset.typeI!==undefined){
+    const i=+e.target.dataset.typeI;
+    if(!operations[i])return;
+    const old=operations[i];
+    const newType=e.target.value;
+    const newValues={};
+    fieldsFor(newType).forEach(([k])=>newValues[k]=(k==="tipoPago"?newType:(old.values[k]||"")));
+    operations[i]={type:newType,values:newValues,qty:old.qty};
+    update();
+  }
 });
 
-
-function pad4(x){
-
-return String(x||"")
-.replace(/\D/g,"")
-.padStart(4,"0")
-.slice(-4);
-
+function validate(){
+  if(!operations.length){alert("Agrega al menos un modelo de operación.");return false}
+  const t=total();
+  if(t<1){alert("La cantidad total debe ser mayor a cero.");return false}
+  if(t>9999){alert("RE[4] permite 4 dígitos. Máximo 9,999 operaciones por archivo.");return false}
+  const c=cfg();
+  if(!c.rastreoPrefix){alert("Captura la inicial de la clave de rastreo.");document.getElementById("cfgRastreoPrefix").focus();return false}
+  if(c.rastreoPrefix.length>30){alert("El prefijo de rastreo es demasiado largo.");return false}
+  return true;
 }
-
 
 function validateAndGenerate(){
+  if(!validate())return;
+  const c=cfg(),t=total();
+  const issuer=(v("reEmisor")||"40036").replace(/\D/g,"").slice(0,5).padStart(5,"0");
+  const seq=pad4(v("seq")||"1");
+  document.getElementById("reEmisor").value=issuer;
+  document.getElementById("issuer").value=issuer;
+  document.getElementById("seq").value=seq;
+  document.getElementById("reOperaciones").value=pad4(t);
 
-if(!operations.length){
+  const lines=[["1",issuer,seq,pad4(t)].join("~")+"~"];
+  let globalIndex=0;
 
-alert(
-"Agrega al menos una cuenta / operación modelo."
-);
-
-return;
-
+  for(const op of operations){
+    for(let n=0;n<op.qty;n++){
+      const fs=fieldsFor(op.type);
+      const record=op.returnRecords?.[n]||null;
+      lines.push(fs.map(([k])=>{
+        if(k==="tipoPago")return op.type;
+        const av=autoValue(k,globalIndex,c,op,record);
+        const val=av!==null?av:(op.values[k]??"");
+        return String(val).replaceAll("~"," ");
+      }).join("~")+"~");
+      globalIndex++;
+    }
+  }
+  generated=lines.join("\r\n");
+  document.getElementById("output").value=generated;
+  renderExpanded();
+  alert(`Archivo generado: ${t.toLocaleString("es-MX")} operaciones.`);
 }
-
-const c=cfg();
-
-if(!c.rastreoPrefix){
-
-alert(
-"Captura la inicial de la clave de rastreo en Configuración."
-);
-
-document
-.getElementById("cfgRastreoPrefix")
-.focus();
-
-return;
-
-}
-
-const t=total();
-
-if(t<1){
-
-alert(
-"La cantidad total debe ser mayor que cero."
-);
-
-return;
-
-}
-
-if(t>9999){
-
-alert(
-"RE[4] permite 4 dígitos. Máximo 9,999 operaciones por archivo."
-);
-
-return;
-
-}
-
-
-const issuer=
-(v("reEmisor")||"40036")
-.replace(/\D/g,"")
-.slice(0,5)
-.padStart(5,"0");
-
-const seq=pad4(v("seq")||"1");
-
-
-document.getElementById("reEmisor").value=issuer;
-document.getElementById("issuer").value=issuer;
-
-document.getElementById("seq").value=seq;
-
-document.getElementById("reOperaciones").value=pad4(t);
-
-
-const lines=[
-["1",issuer,seq,pad4(t)].join("~")+"~"
-];
-
-let globalIndex=0;
-
-
-for(const op of operations){
-
-for(let n=0;n<op.qty;n++){
-
-const fs=fieldsFor(op.type);
-
-lines.push(
-
-fs.map(([k])=>{
-
-if(k==="tipoPago")
-return op.type;
-
-const av=autoValue(k,globalIndex,c);
-
-const val=
-av!==null
-?av
-:(op.values[k]??"");
-
-return String(val)
-.replaceAll("~"," ");
-
-}).join("~")+"~"
-
-);
-
-globalIndex++;
-
-}
-
-}
-
-
-generated=lines.join("\r\n");
-
-document.getElementById("output").value=generated;
-
-alert(
-`Archivo generado en vista previa: ${t.toLocaleString("es-MX")} operaciones.`
-);
-
-}
-
 
 function formatFileTimestamp(){
-
-let d=new Date(
-document.getElementById("fileDateTime").value||Date.now()
-);
-
-if(isNaN(d))
-d=new Date();
-
-const p=n=>String(n).padStart(2,"0");
-
-return`${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
-
+  let d=new Date(document.getElementById("fileDateTime").value||Date.now());
+  if(isNaN(d))d=new Date();
+  const p=n=>String(n).padStart(2,"0");
+  return `${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
 }
-
 
 function downloadFile(){
-
-if(!generated){
-
-validateAndGenerate();
-
-if(!generated)
-return;
-
+  if(!generated){validateAndGenerate();if(!generated)return}
+  const issuer=(v("reEmisor")||"40036").replace(/\D/g,"").slice(0,5).padStart(5,"0");
+  const seq=pad4(v("seq")||"1");
+  const name=`${issuer}${seq}${formatFileTimestamp()}.env.sbmx`;
+  const blob=new Blob([generated+"\r\n"],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
 }
-
-const issuer=
-(v("reEmisor")||"40036")
-.replace(/\D/g,"")
-.slice(0,5)
-.padStart(5,"0");
-
-const seq=pad4(v("seq")||"1");
-
-const name=
-`${issuer}${seq}${formatFileTimestamp()}.env.sbmx`;
-
-const blob=
-new Blob(
-[generated+"\r\n"],
-{type:"text/plain;charset=utf-8"}
-);
-
-const a=document.createElement("a");
-
-a.href=URL.createObjectURL(blob);
-a.download=name;
-a.click();
-
-setTimeout(
-()=>URL.revokeObjectURL(a.href),
-1000
-);
-
-}
-
 
 /* =========================
-   INICIALIZACIÓN ORIGINAL
+   DEVOLUCIONES DESDE TXT
    ========================= */
 
+function normalizeAccount(x){
+  return String(x??"").trim().replace(/\s+/g,"").replace(/^"+|"+$/g,"");
+}
+
+function getInvalidSet(){
+  return new Set(v("invalidAccounts").split(/\r?\n|[,;]+/).map(normalizeAccount).filter(Boolean));
+}
+
+function splitLayoutLine(line){
+  let s=line.replace(/^\uFEFF/,"").trim();
+  if(!s)return [];
+  if(s.endsWith("~"))s=s.slice(0,-1);
+  return s.split("~");
+}
+
+function accountIndexForType(type){
+  // Índices 0-based de los layouts proporcionados por el usuario.
+  if(type==="01")return 15; // RP[16] cuenta beneficiario
+  if(type==="02")return 8;  // RP[9] cuenta beneficiario
+  return -1;
+}
+
+async function analyzeReceivedTxt(){
+  const file=document.getElementById("receivedTxt").files[0];
+  const status=document.getElementById("returnStatus");
+  detectedReturns=[];receivedLines=[];
+  document.getElementById("createReturnsBtn").disabled=true;
+  document.getElementById("returnKpis").innerHTML="";
+  document.getElementById("returnTable").innerHTML="";
+
+  if(!file){status.innerHTML='<div class="error">Selecciona primero el TXT recibido.</div>';return}
+  const invalid=getInvalidSet();
+  if(!invalid.size){status.innerHTML='<div class="error">Captura al menos una cuenta inválida, una por línea.</div>';return}
+
+  const text=await file.text();
+  const raw=text.replace(/\r\n/g,"\n").replace(/\r/g,"\n").split("\n");
+  receivedLines=raw;
+
+  let skipped=0;
+  for(let lineNo=0;lineNo<raw.length;lineNo++){
+    const line=raw[lineNo].trim();
+    if(!line)continue;
+    const p=splitLayoutLine(line);
+    if(!p.length)continue;
+
+    // Encabezado RE: no es operación.
+    if(p[0]==="1" && p.length===4){skipped++;continue}
+
+    const type=p[1]||"";
+    const idx=accountIndexForType(type);
+    if(idx<0){skipped++;continue}
+
+    const account=normalizeAccount(p[idx]);
+    if(!account)continue;
+
+    if(invalid.has(account)){
+      detectedReturns.push({
+        lineNo:lineNo+1,type,account,
+        folioPaquete:p[0]||"",
+        monto:p[3]||"",
+        folioPago:p[4]||"",
+        rastreo:p[5]||"",
+        rastreoOriginal:p[5]||"",
+        raw:line
+      });
+    }
+  }
+
+  const uniqueMap=new Map();
+  detectedReturns.forEach(x=>{
+    const key=`${x.lineNo}|${x.account}|${x.rastreo}|${x.folioPago}`;
+    uniqueMap.set(key,x);
+  });
+  detectedReturns=[...uniqueMap.values()];
+
+  if(detectedReturns.length){
+    status.innerHTML=`<div class="success"><b>${detectedReturns.length}</b> operación(es) encontradas para devolución. Causa configurada: <b>01 — Cuenta inexistente</b>.</div>`;
+    document.getElementById("createReturnsBtn").disabled=false;
+  }else{
+    status.innerHTML='<div class="notice">No se encontraron operaciones de los tipos 01/02 cuya cuenta beneficiaria coincida exactamente con las cuentas inválidas capturadas.</div>';
+  }
+
+  document.getElementById("returnKpis").innerHTML=`
+    <div class="kpi-grid">
+      <div class="kpi"><b>${raw.filter(x=>x.trim()).length}</b><span>Líneas no vacías del TXT</span></div>
+      <div class="kpi"><b>${detectedReturns.length}</b><span>Operaciones a devolver</span></div>
+      <div class="kpi"><b>${invalid.size}</b><span>Cuentas inválidas cargadas</span></div>
+      <div class="kpi"><b>${skipped}</b><span>Líneas omitidas</span></div>
+    </div>`;
+
+  let table='<div class="return-list"><table><thead><tr><th>Línea</th><th>Tipo</th><th>Cuenta inválida</th><th>Folio pago</th><th>Rastreo</th><th>Monto</th></tr></thead><tbody>';
+  detectedReturns.slice(0,1000).forEach(x=>{
+    table+=`<tr><td>${x.lineNo}</td><td>${esc(x.type)}</td><td class="mono">${esc(x.account)}</td><td>${esc(x.folioPago)}</td><td class="mono">${esc(x.rastreo)}</td><td>${esc(x.monto)}</td></tr>`;
+  });
+  table+='</tbody></table></div>';
+  if(detectedReturns.length>1000)table+=`<div class="hint">Se muestran las primeras 1,000 coincidencias. La generación conserva todas las coincidencias detectadas.</div>`;
+  document.getElementById("returnTable").innerHTML=detectedReturns.length?table:"";
+}
+
+function createReturnModels(){
+  if(!detectedReturns.length)return;
+
+  // Un solo modelo puede representar todas las devoluciones detectadas.
+  // Cada registro conserva su monto y su rastreo original.
+  operations.push({
+    type:"05",
+    values:{
+      folioPaquete:globalFolioPaquete(),
+      tipoPago:"05",
+      receptor:"",
+      monto:"",
+      folioPago:"",
+      rastreo:"",
+      rastreoOriginal:"",
+      causaDevolucion:"01"
+    },
+    qty:detectedReturns.length,
+    returnRecords:detectedReturns.map(x=>({monto:x.monto,rastreoOriginal:x.rastreoOriginal,original:x}))
+  });
+
+  update();
+  document.getElementById("returnStatus").innerHTML+=`<div class="success"><b>${detectedReturns.length}</b> devoluciones agregadas como un solo modelo tipo 05. El folio de pago continúa desde <b>${globalFolioPagoStart()}</b>.</div>`;
+  document.getElementById("ops").lastElementChild?.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function clearReceived(){
+  document.getElementById("receivedTxt").value="";
+  document.getElementById("invalidAccounts").value="";
+  detectedReturns=[];receivedLines=[];
+  document.getElementById("returnStatus").innerHTML="";
+  document.getElementById("returnKpis").innerHTML="";
+  document.getElementById("returnTable").innerHTML="";
+  document.getElementById("createReturnsBtn").disabled=true;
+}
+
+/* Inicialización */
 (function(){
-
-const d=new Date();
-
-const p=n=>String(n).padStart(2,"0");
-
-document.getElementById("fileDateTime").value=
-`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
-
-addOperation();
-
+  const d=new Date(),p=n=>String(n).padStart(2,"0");
+  const safe=f=>{try{f()}catch(e){console.error(e)}};
+  safe(()=>document.getElementById("fileDateTime").value=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`);
+  safe(()=>document.getElementById("folioPaqueteGeneral").value="");
+  safe(()=>showLayoutCatalog("01"));
+  safe(()=>addOperation());
 })();
-
 </script>
-
 </body>
 </html>
