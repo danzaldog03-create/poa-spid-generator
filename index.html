@@ -240,7 +240,7 @@ Para devolución normal utiliza <b>tipo de pago 05</b> y causa <b>01 — Cuenta 
 <div id="returnTable"></div>
 
 <div class="actions">
-<button class="primary" id="createReturnsBtn" onclick="createReturnModels()" disabled>↩️ Crear modelos de devolución</button>
+<button class="primary" id="createReturnsBtn" onclick="createReturnModels()">↩️ Crear modelos de devolución</button>
 </div>
 
 <div class="hint" style="margin-top:8px">
@@ -691,8 +691,9 @@ function getInvalidSet(){
 function splitLayoutLine(line){
   let s=line.replace(/^\uFEFF/,"").trim();
   if(!s)return [];
-  if(s.endsWith("~"))s=s.slice(0,-1);
-  return s.split("~");
+  const dl=["~","^","|",";","\t"].find(x=>s.includes(x))||"~";
+  if(s.endsWith(dl))s=s.slice(0,-1);
+  return s.split(dl).map(x=>x.trim().replace(/^"+|"+$/g,""));
 }
 
 function accountIndexForType(type){
@@ -706,7 +707,7 @@ async function analyzeReceivedTxt(){
   const file=document.getElementById("receivedTxt").files[0];
   const status=document.getElementById("returnStatus");
   detectedReturns=[];receivedLines=[];
-  document.getElementById("createReturnsBtn").disabled=true;
+  document.getElementById("createReturnsBtn").disabled=false;
   document.getElementById("returnKpis").innerHTML="";
   document.getElementById("returnTable").innerHTML="";
 
@@ -718,7 +719,7 @@ async function analyzeReceivedTxt(){
   const raw=text.replace(/\r\n/g,"\n").replace(/\r/g,"\n").split("\n");
   receivedLines=raw;
 
-  let skipped=0;
+  let skipped=0;const stats={};
   for(let lineNo=0;lineNo<raw.length;lineNo++){
     const line=raw[lineNo].trim();
     if(!line)continue;
@@ -732,7 +733,9 @@ async function analyzeReceivedTxt(){
     const idx=accountIndexForType(type);
     if(idx<0){skipped++;continue}
 
-    const account=normalizeAccount(p[idx]);
+    stats[type]=(stats[type]||0)+1;
+    let account=normalizeAccount(p[idx]);
+    if(!invalid.has(account)){const alt=p.findIndex((x,ix)=>ix>=5&&!(type==="01"&&ix===8)&&invalid.has(normalizeAccount(x)));if(alt>=0)account=normalizeAccount(p[alt])}
     if(!account)continue;
 
     if(invalid.has(account)){
@@ -759,7 +762,7 @@ async function analyzeReceivedTxt(){
     status.innerHTML=`<div class="success"><b>${detectedReturns.length}</b> operación(es) encontradas para devolución. Causa configurada: <b>01 — Cuenta inexistente</b>.</div>`;
     document.getElementById("createReturnsBtn").disabled=false;
   }else{
-    status.innerHTML='<div class="notice">No se encontraron operaciones de los tipos 01/02 cuya cuenta beneficiaria coincida exactamente con las cuentas inválidas capturadas.</div>';
+    status.innerHTML=`<div class="notice">No se encontraron coincidencias. Líneas leídas: <b>${raw.filter(x=>x.trim()).length}</b> · tipo 01: <b>${stats["01"]||0}</b> · tipo 02: <b>${stats["02"]||0}</b> · cuentas capturadas: <b>${invalid.size}</b>. Revisa que el TXT sea el layout enviado (tipo de pago en la 2ª posición) y que la cuenta esté completa.</div>`;
   }
 
   document.getElementById("returnKpis").innerHTML=`
@@ -780,7 +783,9 @@ async function analyzeReceivedTxt(){
 }
 
 function createReturnModels(){
-  if(!detectedReturns.length)return;
+  if(!detectedReturns.length){alert("No hay devoluciones detectadas. Primero carga el TXT, captura las cuentas inválidas y pulsa «Detectar cuentas inválidas».");return}
+  operations=operations.filter(o=>o.returnRecords||Object.entries(o.values).some(([k,val])=>k!=="tipoPago"&&String(val||"").trim()!==""));
+  generated="";
 
   // Un solo modelo puede representar todas las devoluciones detectadas.
   // Cada registro conserva su monto y su rastreo original.
@@ -803,6 +808,7 @@ function createReturnModels(){
   update();
   document.getElementById("returnStatus").innerHTML+=`<div class="success"><b>${detectedReturns.length}</b> devoluciones agregadas como un solo modelo tipo 05. El folio de pago continúa desde <b>${globalFolioPagoStart()}</b>.</div>`;
   document.getElementById("ops").lastElementChild?.scrollIntoView({behavior:"smooth",block:"start"});
+  alert(`Se agregó 1 modelo tipo 05 con ${detectedReturns.length} devolución(es). Ahora pulsa «Validar y generar».`);
 }
 function clearReceived(){
   document.getElementById("receivedTxt").value="";
@@ -811,7 +817,7 @@ function clearReceived(){
   document.getElementById("returnStatus").innerHTML="";
   document.getElementById("returnKpis").innerHTML="";
   document.getElementById("returnTable").innerHTML="";
-  document.getElementById("createReturnsBtn").disabled=true;
+  document.getElementById("createReturnsBtn").disabled=false;
 }
 
 /* Inicialización */
