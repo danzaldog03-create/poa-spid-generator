@@ -288,6 +288,14 @@ Las devoluciones generadas quedan como modelos separados. Puedes revisar el layo
 </div>
 
 <div class="card" style="margin-top:12px">
+<h2>🔄 Intercambiar ordenante ↔ beneficiario</h2>
+<div class="hint">Con los modelos ya creados, invierte nombre, tipo de cuenta, cuenta y RFC entre ordenante y beneficiario, asigna nuevo rastreo y regenera el layout. Tipo 01 se intercambia directo; 02 ↔ 03 se convierten uno en el otro. Los tipos 04, 05 y 06 no cambian. Si lo pulsas de nuevo, regresa al original. Domicilio, CP y fecha de constitución del ordenante siguen saliendo de la configuración.</div>
+<div class="row"><div><label>Nuevo prefijo de rastreo (opcional)</label><input id="swapPrefix" placeholder="Vacío = conserva el actual"></div><div><label>Consecutivo inicial (opcional)</label><input id="swapStart" type="number" min="1" placeholder="Vacío = continúa"></div></div>
+<div class="actions"><button class="orange" onclick="swapOrdBen()">🔄 Intercambiar y generar</button></div>
+<div id="swapStatus"></div>
+</div>
+
+<div class="card" style="margin-top:12px">
 <h2>Vista previa del archivo</h2>
 <textarea id="output" class="preview" readonly placeholder="Aquí aparecerá el contenido serializado con ~"></textarea>
 <div class="actions">
@@ -367,6 +375,8 @@ let operations=[];
 let generated="";
 let detectedReturns=[];
 let receivedLines=[];
+const ORD4=["nombreOrdenante","tipoCuentaOrdenante","cuentaOrdenante","rfcOrdenante"];
+const BEN4=["nombreBeneficiario","tipoCuentaBeneficiario","cuentaBeneficiario","rfcBeneficiario"];
 
 function v(id){const e=document.getElementById(id);return e?e.value.trim():""}
 function fieldsFor(t){return typeFields[t]||typeFields["01"]}
@@ -419,6 +429,8 @@ function autoValue(k,index,c,op,record=null){
   // PRIORIDAD 1: campos fijos
   const fixed=fixedValueForField(k);
   if(fixed!==null) return fixed;
+  // Modelo con ordenante propio (tras intercambiar): se toma de los campos del modelo, no de la configuración
+  if(op?.ordOv && ORD4.includes(k)) return null;
 
   // Datos provenientes del TXT recibido para una devolución detectada.
   if(op?.type==="05" && record){
@@ -611,7 +623,7 @@ document.addEventListener("change",e=>{
     const newType=e.target.value;
     const newValues={};
     fieldsFor(newType).forEach(([k])=>newValues[k]=(k==="tipoPago"?newType:(old.values[k]||"")));
-    operations[i]={type:newType,values:newValues,qty:old.qty};
+    operations[i]={type:newType,values:newValues,qty:old.qty,ordOv:old.ordOv};
     update();
   }
 });
@@ -627,7 +639,7 @@ function validate(){
   return true;
 }
 
-function validateAndGenerate(){
+function validateAndGenerate(quiet){
   if(!validate())return;
   const c=cfg(),t=total();
   const issuer=(v("reEmisor")||"40036").replace(/\D/g,"").slice(0,5).padStart(5,"0");
@@ -656,7 +668,7 @@ function validateAndGenerate(){
   generated=lines.join("\r\n");
   document.getElementById("output").value=generated;
   renderExpanded();
-  alert(`Archivo generado: ${t.toLocaleString("es-MX")} operaciones.`);
+  if(quiet!==true)alert(`Archivo generado: ${t.toLocaleString("es-MX")} operaciones.`);
 }
 
 function formatFileTimestamp(){
@@ -810,6 +822,42 @@ function createReturnModels(){
   document.getElementById("ops").lastElementChild?.scrollIntoView({behavior:"smooth",block:"start"});
   alert(`Se agregó 1 modelo tipo 05 con ${detectedReturns.length} devolución(es). Ahora pulsa «Validar y generar».`);
 }
+function swapOrdBen(){
+  if(!operations.length){alert("Primero crea los modelos.");return}
+  const c=cfg();
+  const prefix=v("swapPrefix").replaceAll("~","")||c.rastreoPrefix;
+  if(!prefix){alert("Captura la inicial de la clave de rastreo.");return}
+  const t=total();
+  let start=Number(v("swapStart"));
+  if(!(start>=1)) start=(prefix===c.rastreoPrefix)?c.rastreoStart+t:1;
+  let done=0,skipped=0;
+  operations=operations.map(op=>{
+    const g=(o,k)=>{const a=autoValue(k,0,c,o);return a!==null?a:(o.values[k]||"")};
+    const fix=o=>{o.ordOv=!ORD4.every(k=>(o.values[k]||"")===(c[k]||""));return o};
+    if(op.type==="01"){
+      const ord=ORD4.map(k=>g(op,k)),ben=BEN4.map(k=>g(op,k));
+      const values={...op.values};
+      ORD4.forEach((k,j)=>values[k]=ben[j]);BEN4.forEach((k,j)=>values[k]=ord[j]);
+      done++;return fix({...op,values,ordOv:true});
+    }
+    if(op.type==="02"||op.type==="03"){
+      const nt=op.type==="02"?"03":"02",src=op.type==="02"?BEN4:ORD4,dst=op.type==="02"?ORD4:BEN4;
+      const vals=src.map(k=>g(op,k)),values={};
+      fieldsFor(nt).forEach(([k])=>values[k]=k==="tipoPago"?nt:(op.values[k]||""));
+      dst.forEach((k,j)=>values[k]=vals[j]);
+      done++;return fix({type:nt,values,qty:op.qty,ordOv:nt==="03"});
+    }
+    skipped++;return op;
+  });
+  document.getElementById("cfgRastreoPrefix").value=prefix;
+  document.getElementById("cfgRastreoStart").value=start;
+  document.getElementById("swapPrefix").value="";document.getElementById("swapStart").value="";
+  generated="";update();
+  validateAndGenerate(true);
+  document.getElementById("swapStatus").innerHTML=`<div class="notice">Intercambiados <b>${done}</b> modelo(s)${skipped?` · <b>${skipped}</b> sin cambio (tipos 04/05/06)`:""}. Rastreo nuevo: <b>${makeRastreo({rastreoPrefix:prefix,rastreoStart:start},0)}</b> a <b>${makeRastreo({rastreoPrefix:prefix,rastreoStart:start},Math.max(0,t-1))}</b>. Layout regenerado en la vista previa.</div>`;
+  document.getElementById("output").scrollIntoView({behavior:"smooth",block:"center"});
+}
+
 function clearReceived(){
   document.getElementById("receivedTxt").value="";
   document.getElementById("invalidAccounts").value="";
